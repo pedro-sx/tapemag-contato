@@ -272,13 +272,13 @@ h2 a img {
   z-index: 0;
 }
 
-  @media (max-width: 480px) {
+/* Mobile */
+@media (max-width: 480px) {
 
   .navbar {
     height: 50px;
     padding: 0 10px;
-    justify-content: space-between;
-    position: fixed;
+    justify-content: flex-start; /* Alinha itens à esquerda */
   }
 
   .redes-sociais {
@@ -286,6 +286,8 @@ h2 a img {
     transform: none;
     display: flex;
     gap: 10px;
+    left: auto;
+    top: auto;
     align-items: center;
   }
 
@@ -293,9 +295,9 @@ h2 a img {
     position: static;
     transform: none;
     display: flex;
-    align-items: center;
     flex-grow: 1;
     justify-content: center;
+    align-items: center;
   }
 
   .redes-sociais img {
@@ -307,7 +309,6 @@ h2 a img {
     width: 120px;
     height: auto;
   }
-
 
   h2 {
     width: 90vw;
