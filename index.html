@@ -23,12 +23,26 @@
       <a href="https://www.linkedin.com/company/tapemag/" target="_blank">
         <img src="img/lindekin.svg" alt="LinkedIn">
       </a>
+      <div class="tema-toggle">
+        <input type="checkbox" id="tema-switch">
+        <label for="tema-switch" class="switch-label">
+          <span class="icone-sol"> <img src="img/sol.png"> </span>
+          <span class="icone-lua"> <img src="img/lua-crescente.png"> </span>
+          <span class="switch-bola"></span>
+        </label>
+      </div>
+
     </div>
 
-    <div class="logo-tapemag">
-      <img src="img/Tapemag-LogotipoW.png" alt="Logo Tapemag">
+
+    <div class="logo-tapemag-preto">
+      <img id="logo-img" src="img/Tapemag-LogotipoW.png" alt="Logo Tapemag">
     </div>
+
+
   </nav>
+
+
 
 
   <div class="spacer"></div>
@@ -60,13 +74,13 @@
     </a>
   </h2>
   <h2>
-    <a href="https://wa.me/1534511427">
+    <a href="https://wa.me/SEUNUMERO">
       <img src="img/joao.jpeg">
       JOÃO ADELINO
     </a>
   </h2>
   <h2>
-    <a href="https://wa.me/1534511409">
+    <a href="https://1534511409">
       <img src="img/nicolly.jpg">
       NICOLLY
     </a>
@@ -90,13 +104,13 @@
     </a>
   </h2>
   <h2>
-    <a href="https://wa.me/1534511410">
+    <a href="https://1534511410">
       <img src="img/machado.jpg">
       MACHADO
     </a>
   </h2>
   <h2>
-    <a href="https://wa.me/1534511420">
+    <a href="https://1534511420">
       <img src="img/promoção-boné-story.png">
       JUAN
     </a>
@@ -113,6 +127,7 @@
       DAVID
     </a>
   </h2>
+
   </div>
 
 
@@ -214,77 +229,115 @@
     });
   </script>
 
- <div class="botoes-flutuantes" id="flutuantes">
-  <a href="http://tapemag.com.br/" target="_blank" title="Site">
-    <img src="img/web.svg" alt="Site">
-  </a>
-  <a href="https://docs.google.com/forms/d/1LF0hvVyHhioRAXUVql61fl0ERKnh30cgXnAOcSDjnM0/edit#responses" target="_blank" title="Formulário">
-    <img src="img/forms.svg" alt="Formulário">
-  </a>
-</div>
+  <div class="botoes-flutuantes" id="flutuantes">
+    <a href="http://tapemag.com.br/" target="_blank" title="Site">
+      <img src="img/web.svg" alt="Site">
+    </a>
+    <a href="https://docs.google.com/forms/d/1LF0hvVyHhioRAXUVql61fl0ERKnh30cgXnAOcSDjnM0/edit#responses"
+      target="_blank" title="Formulário">
+      <img src="img/forms.svg" alt="Formulário">
+    </a>
+  </div>
 
   <script>
-  const botoes = document.getElementById('flutuantes');
-  const rodape = document.getElementById('rodape');
+    const botoes = document.getElementById('flutuantes');
+    const rodape = document.getElementById('rodape');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        botoes.classList.add('hidden');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          botoes.classList.add('hidden');
+        } else {
+          botoes.classList.remove('hidden');
+        }
+      });
+    });
+
+    observer.observe(rodape);
+  </script>
+
+  <script>
+    const botoes = document.getElementById('flutuantes');
+    const rodape = document.getElementById('rodape');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          botoes.classList.add('hidden');
+        } else {
+          botoes.classList.remove('hidden');
+        }
+      });
+    });
+
+    observer.observe(rodape);
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const glow = document.querySelector('.glow');
+
+      window.addEventListener('mousemove', e => {
+        glow.style.left = e.clientX + 'px';
+        glow.style.top = e.clientY + 'px';
+      });
+
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight;
+
+        const pertoDoTopo = scrollTop <= 150;
+        const pertoDoFim = (scrollTop + windowHeight) >= (docHeight - 150);
+
+        if (pertoDoTopo || pertoDoFim) {
+          document.querySelectorAll('h2').forEach(card => {
+            card.classList.add('expandido');
+          });
+        } else {
+          document.querySelectorAll('h2').forEach(card => {
+            card.classList.remove('expandido');
+          });
+        }
+      });
+    }
+  </script>
+
+  <script>
+  const switchInput = document.getElementById('tema-switch');
+    const logo = document.getElementById('logo-img');
+
+    function aplicarTema(tema) {
+      if (tema === 'claro') {
+        document.body.classList.add('claro');
+        if (logo) logo.src = 'img/tapemag-pretoP.png'; // logo preta para fundo claro
+        switchInput.checked = true; // marca o switch
       } else {
-        botoes.classList.remove('hidden');
+        document.body.classList.remove('claro');
+        if (logo) logo.src = 'img/Tapemag-LogotipoW.png'; // logo branca para fundo escuro
+        switchInput.checked = false; // desmarca o switch
       }
-    });
-  });
+      localStorage.setItem('tema', tema);
+    }
 
-  observer.observe(rodape);
-</script>
-
-<script>
-  const botoes = document.getElementById('flutuantes');
-  const rodape = document.getElementById('rodape');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        botoes.classList.add('hidden');
-      } else {
-        botoes.classList.remove('hidden');
-      }
-    });
-  });
-
-  observer.observe(rodape);
-</script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const glow = document.querySelector('.glow');
-
-    window.addEventListener('mousemove', e => {
-      glow.style.left = e.clientX + 'px';
-      glow.style.top = e.clientY + 'px';
+    switchInput.addEventListener('change', () => {
+      const temaSelecionado = switchInput.checked ? 'claro' : 'escuro';
+      aplicarTema(temaSelecionado);
     });
 
-    window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const windowHeight = window.innerHeight;
-  const docHeight = document.documentElement.scrollHeight;
+    window.addEventListener('DOMContentLoaded', () => {
+  const temaSalvo = localStorage.getItem('tema');
 
-  const pertoDoTopo = scrollTop <= 150;
-  const pertoDoFim = (scrollTop + windowHeight) >= (docHeight - 150);
-
-  if (pertoDoTopo || pertoDoFim) {
-    document.querySelectorAll('h2').forEach(card => {
-      card.classList.add('expandido');
-    });
+  if (temaSalvo) {
+    aplicarTema(temaSalvo);
   } else {
-    document.querySelectorAll('h2').forEach(card => {
-      card.classList.remove('expandido');
-    });
+    const prefereClaro = window.matchMedia('(prefers-color-scheme: light)').matches;
+    aplicarTema(prefereClaro ? 'claro' : 'escuro');
   }
 });
-</script>
+  </script>
+
+
 
 </body>
 
