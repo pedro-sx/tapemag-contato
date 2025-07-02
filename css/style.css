@@ -560,3 +560,56 @@ body.claro .botao-link:hover {
 body.claro .botao-link i {
   color: #1a1a1a;
 }
+
+@media (max-width: 768px) {
+  .logo-tapemag-preto img {
+    height: 30px; /* menor que 40px */
+  }
+}
+
+@media (max-width: 768px) {
+  .tema-toggle {
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    scale: 0.9;
+  }
+
+  .switch-label {
+    width: 60px;
+    height: 36px;
+    padding: 0 6px;
+  }
+
+  .switch-bola {
+    width: 20px;
+    height: 20px;
+  }
+
+  .icone-sol, .icone-lua {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.logo-tapemag-preto img {
+  height: 40px;
+  max-width: none;
+  width: auto;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .logo-tapemag-preto img {
+    height: 15px; /* menor que 40px */
+    max-width: 130px; /* limita largura máxima no mobile */
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-tapemag-preto img {
+    height: 20px;
+    max-width: 110px;
+  }
+}
